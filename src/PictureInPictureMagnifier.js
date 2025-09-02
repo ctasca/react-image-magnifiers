@@ -13,11 +13,17 @@ class PictureInPictureMagnifier extends Component {
   static propTypes = {
     imageSrc: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string)
+      PropTypes.shape({ src: PropTypes.string }),
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.shape({ src: PropTypes.string })])
+      )
     ]),
     largeImageSrc: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string)
+      PropTypes.shape({ src: PropTypes.string }),
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.shape({ src: PropTypes.string })])
+      )
     ]),
     imageAlt: PropTypes.string,
     previewSizePercentage: PropTypes.number,

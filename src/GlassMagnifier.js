@@ -67,11 +67,17 @@ const GlassMagnifier = ({
 GlassMagnifier.propTypes = {
   imageSrc: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string)
+    PropTypes.shape({ src: PropTypes.string }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.shape({ src: PropTypes.string })])
+    )
   ]),
   largeImageSrc: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string)
+    PropTypes.shape({ src: PropTypes.string }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.shape({ src: PropTypes.string })])
+    )
   ]),
   imageAlt: PropTypes.string,
   allowOverflow: PropTypes.bool,
