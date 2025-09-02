@@ -2,6 +2,12 @@
 
 ## 1.0.0-react19.0 (Sept 2nd, 2025)
 
+- React 19: Replace defaultProps on function components with default parameter values to align with React 19 behavior. Components maintain the same defaults. 
+- React 19: Update peerDependencies to include React 19 ("react": ^16.14 || ^17 || ^18 || ^19).
+- Compatibility: imageSrc and largeImageSrc now accept strings, object assets with a src field (e.g., from bundlers like Webpack/Next.js), or arrays of these for fallbacks.
+- Examples: Switch example app to React 18+ root API (createRoot) and add babel.config.js for tests/build.
+- Development: Fix example image imports returning [object Module] causing 404 in dev server by configuring file-loader with `esModule: false` in webpack.config.js. This restores string URLs for imported images in examples.
+
 ## 1.4.0 (July 3rd, 2020)
 
 - Added props for changing activation method on SideBySideMagnifier and MagnifierPreview.

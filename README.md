@@ -80,9 +80,9 @@ _imageSrc is the only required prop._
 
 **cursorStyle:** Accepts any valid CSS cursor. Default: Magnifier - "zoom-in", GlassMagnifier - "none", SideBySideMagnifier - "crosshair", PictureInPicture - "crosshair". Type: string.
 
-**imageSrc:** Passed to the src of the small image (not zoomed). Also used for the large image (zoomed) if no largeImageSrc is set. Also accepts an array of image paths in case fallbacks are required. Each image path in the array will be tried in order until either one loads, or the end of the array is reached. Type: string or array of strings, Default: "".
+**imageSrc:** Passed to the src of the small image (not zoomed). Also used for the large image (zoomed) if no largeImageSrc is set. Accepts a string path, an object with a src field (as returned by some bundlers), or an array of these for fallbacks. Each item in the array will be tried in order until either one loads, or the end of the array is reached. Type: string, { src: string }, or an array of these. Default: "".
 
-**largeImageSrc:** Passed to the src of the large image (zoomed). Also accepts an array of image paths in case fallbacks are required. Each image path in the array will be tried in order until either one loads, or the end of the array is reached. Type: string or array of strings, Default: "".
+**largeImageSrc:** Passed to the src of the large image (zoomed). Accepts a string path, an object with a src field, or an array of these for fallbacks. Each item in the array will be tried in order until either one loads, or the end of the array is reached. Type: string, { src: string }, or an array of these. Default: "".
 
 **imageAlt:** Passed to the alt of both images.
 
@@ -220,11 +220,11 @@ _Note: onZoomStart and onZoomEnd behaves differently with PictureInPictureMagnif
 
 **touchActivation:** Sets the touch method for zooming in/out. Accepts: "tap", "doubleTap", or "longTouch". Can also import the TOUCH_ACTIVATION constants to assist. Type: string, Default: "tap".
 
-**imageSrc:** Passed to the src of the image. Also accepts an array of image paths in case fallbacks are required. Each image path in the array will be tried in order until either one loads, or the end of the array is reached. Type: string or array of strings, Default: "".
+**imageSrc:** Passed to the src of the image. Accepts a string path, an object with a src field, or an array of these for fallbacks. Each item in the array will be tried in order until either one loads, or the end of the array is reached. Type: string, { src: string }, or an array of these. Default: "".
 
 **imageAlt:** Passed to the alt of the image.
 
-**largeImageSrc:** Only available when using autoInPlace or inPlaceMinBreakpoint on the MagnifierContainer. Passed to the src of the large image (zoomed while in place mode is active). Also accepts an array of image paths in case fallbacks are required. Each image path in the array will be tried in order until either one loads, or the end of the array is reached. Type: string or array of strings, Default: "".
+**largeImageSrc:** Only available when using autoInPlace or inPlaceMinBreakpoint on the MagnifierContainer. Passed to the src of the large image (zoomed while in place mode is active). Accepts a string path, an object with a src field, or an array of these for fallbacks. Each item in the array will be tried in order until either one loads, or the end of the array is reached. Type: string, { src: string }, or an array of these. Default: "".
 
 **style:** Passed to the style of the parent div.
 
@@ -258,7 +258,7 @@ _Note: onZoomStart and onZoomEnd behaves differently with PictureInPictureMagnif
 
 ## MagnifierZoom Props
 
-**imageSrc:** Passed to the src of the image. Also accepts an array of image paths in case fallbacks are required. Each image path in the array will be tried in order until either one loads, or the end of the array is reached. Type: string or array of strings, Default: "".
+**imageSrc:** Passed to the src of the image. Accepts a string path, an object with a src field, or an array of these for fallbacks. Each item in the array will be tried in order until either one loads, or the end of the array is reached. Type: string, { src: string }, or an array of these. Default: "".
 
 **imageAlt:** Passed to the alt of the image.
 
@@ -278,3 +278,33 @@ cd react-image-magnifiers
 npm install
 npm start
 ```
+
+## React 19 Compatibility
+
+- Function components in this library now use default parameter values rather than defaultProps, consistent with React 19 behavior. Class components (e.g., PictureInPictureMagnifier) continue to use static defaultProps.
+- imageSrc and largeImageSrc props accept a string, an object containing a src field (as returned by some bundlers like Webpack/Next.js asset modules), or an array of these for fallback.
+- The example app uses React 18+ createRoot API.
+
+## Troubleshooting (Examples / Development)
+
+If running the example project results in a network request to /[object%20Module] and a 404 error, this is due to file-loader returning an ES module object for image imports in newer versions. The examples import the image using require("./sample-image.jpg") and expect a string URL. The webpack configuration includes:
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(jpg|jpeg|png)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            esModule: false
+          }
+        }
+      }
+    ]
+  }
+};
+```
+
+This forces file-loader to return a string URL, fixing the issue. If you maintain your own webpack setup, ensure equivalent configuration or use import imageUrl from "./img.jpg" with a loader configuration that returns a string.

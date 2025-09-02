@@ -21,7 +21,12 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|png)$/,
-        use: "file-loader"
+        use: {
+          loader: "file-loader",
+          options: {
+            esModule: false
+          }
+        }
       },
       {
         test: /\.css$/,

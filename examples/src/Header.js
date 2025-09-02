@@ -8,7 +8,7 @@ const Header = () => {
           <h1>react-image-magnifiers</h1>
         </div>
         <div className="logos">
-          <a href="https://github.com/adamrisberg/react-image-magnifiers">
+          <a href="https://github.com/ctasca/react-image-magnifiers.git">
             <img src={require("./github-logo.png")} alt="Github Logo" />
           </a>
           <a href="https://www.npmjs.com/package/react-image-magnifiers">
