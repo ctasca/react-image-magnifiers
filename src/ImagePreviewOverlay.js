@@ -1,26 +1,24 @@
 import React from "react";
 import styles from "./styles";
 
-const ImagePreviewOverlay = props => {
-  const {
-    previewWidth,
-    previewHeight,
-    previewPosLeft,
-    previewPosRight,
-    previewPosTop,
-    previewPosBottom,
-    imageWidth,
-    imageHeight,
-    overlayOpacity,
-    overlayBoxOpacity,
-    active,
-    transitionSpeed,
-    overlayBackgroundColor,
-    overlayBoxColor,
-    overlayBoxImage,
-    overlayBoxImageSize
-  } = props;
-
+const ImagePreviewOverlay = ({
+  previewWidth,
+  previewHeight,
+  previewPosLeft,
+  previewPosRight,
+  previewPosTop,
+  previewPosBottom,
+  imageWidth,
+  imageHeight,
+  overlayOpacity = 0.5,
+  overlayBoxOpacity = 0.8,
+  active,
+  transitionSpeed = 0.4,
+  overlayBackgroundColor = "#000",
+  overlayBoxColor = "#fff",
+  overlayBoxImage = "",
+  overlayBoxImageSize = ""
+}) => {
   const opacity = active ? overlayOpacity : 0;
   const boxOpacity = active ? overlayBoxOpacity : 0;
 
@@ -82,14 +80,5 @@ const ImagePreviewOverlay = props => {
   );
 };
 
-ImagePreviewOverlay.defaultProps = {
-  overlayOpacity: 0.5,
-  overlayBoxOpacity: 0.8,
-  transitionSpeed: 0.4,
-  overlayBackgroundColor: "#000",
-  overlayBoxColor: "#fff",
-  overlayBoxImage: "",
-  overlayBoxImageSize: ""
-};
 
 export default ImagePreviewOverlay;

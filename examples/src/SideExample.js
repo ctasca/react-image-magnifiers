@@ -53,7 +53,6 @@ class SideExample extends Component {
               alwaysInPlace={alwaysInPlace}
               overlayOpacity={overlayOpacity}
               switchSides={switchSides}
-              zoomPosition="left"
               inPlaceMinBreakpoint={641}
               fillAvailableSpace={fillAvailableSpace}
               fillAlignTop={fillAlignTop}

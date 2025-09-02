@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.0.0-react19.0 (Sept 2nd, 2025)
+
 ## 1.4.0 (July 3rd, 2020)
 
 - Added props for changing activation method on SideBySideMagnifier and MagnifierPreview.

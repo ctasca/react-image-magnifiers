@@ -7,42 +7,40 @@ import ReactInputPosition, {
 } from "react-input-position";
 import SideBySideRenderer from "./SideBySideRenderer";
 
-const SideBySideMagnifier = props => {
-  const {
-    imageSrc,
-    largeImageSrc,
-    imageAlt,
-    overlayOpacity,
-    overlayBoxOpacity,
-    overlayBackgroundColor,
-    overlayBoxColor,
-    overlayBoxImage,
-    overlayBoxImageSize,
-    cursorStyle,
-    alwaysInPlace,
-    transitionSpeed,
-    transitionSpeedInPlace,
-    renderOverlay,
-    className,
-    style,
-    onImageLoad,
-    onLargeImageLoad,
-    switchSides,
-    onZoomStart,
-    onZoomEnd,
-    fillAvailableSpace,
-    fillAlignTop,
-    fillGapLeft,
-    fillGapRight,
-    fillGapTop,
-    fillGapBottom,
-    inPlaceMinBreakpoint,
-    zoomContainerBorder,
-    zoomContainerBoxShadow,
-    mouseActivation,
-    touchActivation
-  } = props;
-
+const SideBySideMagnifier = ({
+  imageSrc = "",
+  largeImageSrc = "",
+  imageAlt = "",
+  overlayOpacity = 0.5,
+  overlayBoxOpacity = 0.8,
+  overlayBackgroundColor = "#000",
+  overlayBoxColor = "#fff",
+  overlayBoxImage = "",
+  overlayBoxImageSize = "",
+  cursorStyle = "crosshair",
+  alwaysInPlace,
+  transitionSpeed = 0.4,
+  transitionSpeedInPlace = 0.4,
+  renderOverlay,
+  className,
+  style,
+  onImageLoad = utils.noop,
+  onLargeImageLoad = utils.noop,
+  switchSides,
+  onZoomStart,
+  onZoomEnd,
+  fillAvailableSpace = true,
+  fillAlignTop = false,
+  fillGapLeft = 0,
+  fillGapRight = 0,
+  fillGapTop = 0,
+  fillGapBottom = 0,
+  inPlaceMinBreakpoint = 0,
+  zoomContainerBorder = "none",
+  zoomContainerBoxShadow = "none",
+  mouseActivation = MOUSE_ACTIVATION.HOVER,
+  touchActivation = TOUCH_ACTIVATION.TOUCH
+}) => {
   return (
     <ReactInputPosition
       style={style}
@@ -124,32 +122,5 @@ SideBySideMagnifier.propTypes = {
   touchActivation: PropTypes.string
 };
 
-SideBySideMagnifier.defaultProps = {
-  imageSrc: "",
-  largeImageSrc: "",
-  imageAlt: "",
-  overlayOpacity: 0.5,
-  overlayBoxOpacity: 0.8,
-  overlayBackgroundColor: "#000",
-  overlayBoxColor: "#fff",
-  overlayBoxImage: "",
-  overlayBoxImageSize: "",
-  cursorStyle: "crosshair",
-  transitionSpeed: 0.4,
-  transitionSpeedInPlace: 0.4,
-  onImageLoad: utils.noop,
-  onLargeImageLoad: utils.noop,
-  fillAvailableSpace: true,
-  fillAlignTop: false,
-  fillGapLeft: 0,
-  fillGapRight: 0,
-  fillGapTop: 0,
-  fillGapBottom: 0,
-  inPlaceMinBreakpoint: 0,
-  zoomContainerBorder: "none",
-  zoomContainerBoxShadow: "none",
-  mouseActivation: MOUSE_ACTIVATION.HOVER,
-  touchActivation: TOUCH_ACTIVATION.TOUCH
-};
 
 export default SideBySideMagnifier;

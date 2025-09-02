@@ -1,12 +1,13 @@
 import React from "react";
 import utils from "./utils";
 
-const Image = React.forwardRef(function(props, ref) {
-  const { onImageLoad, onLoadRefresh, src, alt, ...otherProps } = props;
-
+const Image = React.forwardRef(function(
+  { onImageLoad = utils.noop, onLoadRefresh = utils.noop, src, alt, ...otherProps },
+  ref
+) {
   const [imageIdx, setImageIdx] = React.useState(0);
   const imageErrorRef = React.useRef(false);
-  const imageArr = src.constructor === Array ? src : [src];
+  const imageArr = src && src.constructor === Array ? src : [src];
 
   return (
     <img
@@ -31,9 +32,5 @@ const Image = React.forwardRef(function(props, ref) {
   );
 });
 
-Image.defaultProps = {
-  onImageLoad: utils.noop,
-  onLoadRefresh: utils.noop
-};
 
 export default Image;

@@ -5,16 +5,14 @@ import styles from "./styles";
 import { MagnifierContext } from "./MagnifierContainer";
 import Image from "./Image";
 
-function MagnifierZoom(props) {
-  const {
-    imageSrc,
-    imageAlt,
-    className,
-    style,
-    onImageLoad,
-    transitionSpeed
-  } = props;
-
+function MagnifierZoom({
+  imageSrc = "",
+  imageAlt = "",
+  className,
+  style = {},
+  onImageLoad = utils.noop,
+  transitionSpeed = 0.4
+}) {
   const {
     zoomImageDimensions,
     zoomContainerDimensions,
@@ -74,12 +72,5 @@ MagnifierZoom.propTypes = {
   transitionSpeed: PropTypes.number
 };
 
-MagnifierZoom.defaultProps = {
-  style: {},
-  imageSrc: "",
-  imageAlt: "",
-  onImageLoad: utils.noop,
-  transitionSpeed: 0.4
-};
 
 export default MagnifierZoom;
