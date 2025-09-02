@@ -21,7 +21,7 @@
   "author": "Adam Risberg <myniztan@hotmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctasca/react-image-magnifiers.git"
+    "url": "git+https://github.com/ctasca/react-image-magnifiers.git"
   },
   "homepage": "https://adamrisberg.github.io/react-image-magnifiers",
   "main": "dist/index.js",
