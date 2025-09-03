@@ -4,7 +4,7 @@ import utils from "./utils";
 import ReactInputPosition, {
   TOUCH_ACTIVATION,
   MOUSE_ACTIVATION
-} from "react-input-position";
+} from "@ctasca/react-input-position";
 import MagnifierRenderer from "./MagnifierRenderer";
 
 const Magnifier = ({
